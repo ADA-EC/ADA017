@@ -9,8 +9,20 @@ double mult(double a , double b){
 -------------------------------------------------------------------------
 
 ----------------------------multiply.h-----------------------------------
-
-
 #include "multiply.c"
+--------------------------------------------------------------------------
+
 
 --------------------------------------------------------------------------
+----------------------------Calculadora-----------------------------------
+ #include<stdio.h>
+ #include "multiply.h"
+
+  int main(){
+	  double a,b,c;
+	  printf("Digite dois numeros, usando o ponto como separador decimal:\n \n");
+  	scanf("%lf %lf" , &a, &b);
+  	c=mult(a , b);
+  	printf("\n \n \n    A multiplicacao de %lf e %lf  será: %lf \n \n \n" , a , b , c);
+  	return 0;
+  }
