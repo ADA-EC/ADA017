@@ -1,0 +1,26 @@
+
+*Codigo para a biblioteca:
+D.h   :
+double D(double a, double b);
+
+*Codigo para a função:
+D.c :
+#include<stdio.h>
+#include"D.h"
+
+double D(double a, double b){
+	return a/b;
+}
+
+*Codigo da main:
+#include <stdio.h>
+#include "D.h"
+
+int main(){
+	double a,b,c;
+	printf("Digite dois números, usando o ponto como separador decimal:\n \n");
+	scanf("%lf %lf", &a, &b);
+	c = D(a, b);
+	printf("\n \n \n A divisão dos números será: %lf \n \n \n" , c);
+	return 0;
+}
