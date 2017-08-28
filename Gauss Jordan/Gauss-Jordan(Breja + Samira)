@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+	int  n , i , j ;
+	double c;
+	double * aux;
+	printf ("Digite o número de incognitas do seu sistema:");
+	scanf ("%d",&n);
+	
+	double **matriz = (double**)malloc(n*sizeof(double*));
+	for(i = 0; i < n; i++){
+	 	matriz[i] = (double*)malloc((n+1)*sizeof(double));
+	}
+	
+	printf("\n\n\nDigite os coeficientes e o resultado de cada equacao:\n\n\n"); // Alocamento dos números na matriz criada
+		for(i = 0 ;i < n ; i++){
+			for(int j = 0 ;j < n + 1; j++){
+				scanf("%lf",&matriz[i][j]);
+		}
+	}
+	i = 0; // Verificação de que não há nehum zero na diagonal principal
+	while(i != n){
+		j = i;
+		if(matriz[i][i] == 0){ // Troca de linhas por conta de zeros na diagonal principal
+			while(matriz[j][i] == 0 ){
+				j++;
+				if(j > n) {
+					j= 0;
+				}
+			}
+			
+			aux = matriz[i];
+			matriz[i] = matriz[j];
+				matriz[j] = aux;
+		}
+		i++;
+	}
+    for(int k = 0 ; k <=n ; k++)
+       {
+           for(i = 0; i<=n; i++)
+           {
+               if(i!=k)
+               {
+                   c = matriz[i][k] / matriz[k][k];
+                   for(int l =1; l <= n+1; l++)
+                   {
+                       matriz[i][l] = matriz[i][l]-c*matriz[k][l];
+                   }
+               }
+           }
+       }
+	   
+	   for(i = 0;i < n;i++){
+		   printf("x %d = %lf",i,matriz[i][n+1]/matriz[i][i]);
+	   }
+	   
+	   for(int i = 0; i < n; i++)
+	       free(matriz[i]);
+	   free(matriz);
+	return 0; 
+}
